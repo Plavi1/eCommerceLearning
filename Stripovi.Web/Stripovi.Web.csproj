@@ -7,6 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stripovi.Api\Stripovi.Api.csproj" />
+    <ProjectReference Include="..\Stripovi.Data\Stripovi.Data.csproj" />
   </ItemGroup>
 
 </Project>

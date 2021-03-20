@@ -3,6 +3,7 @@ using Stripovi.Data.Data;
 using Stripovi.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,7 +62,7 @@ namespace Stripovi.Data.Repository
             return null;
         }
 
-        public async void DeleteStrip(int stripId)
+        public async Task<Strip> DeleteStrip(int stripId)
         {
             var result = await context.Strip
                 .FirstOrDefaultAsync(e => e.IdStripa == stripId);
@@ -69,7 +70,19 @@ namespace Stripovi.Data.Repository
             {
                 context.Strip.Remove(result);
                 await context.SaveChangesAsync();
+                return result;
             }
+            return null;
+        }
+
+        public async Task<IEnumerable<Strip>> Search(string naziv)
+        {
+            IQueryable<Strip> query = context.Strip;
+            if(!string.IsNullOrEmpty(naziv))
+            {
+                query = query.Where(e => e.Naziv.Contains(naziv));
+            }
+            return await query.ToListAsync();
         }
     }
 }
