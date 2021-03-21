@@ -16,24 +16,20 @@ namespace Stripovi.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public IEnumerable<Strip> GetStripove()
-        {
-            var responseTask = httpClient.GetAsync("strip");
-            responseTask.Wait();
 
-            var result = responseTask.Result;
+
+        public async Task<IEnumerable<Strip>> GetStripove()
+        {
+            var responseTask = await httpClient.GetAsync("strip");
 
             IEnumerable<Strip> stripovi;
 
-            if (result.IsSuccessStatusCode)
+            if (responseTask.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadFromJsonAsync<IList<Strip>>();
-                readTask.Wait();
-                stripovi = readTask.Result;
+                stripovi = await responseTask.Content.ReadFromJsonAsync<IList<Strip>>(); 
             }
             else
             {
-
                 stripovi = Enumerable.Empty<Strip>();
             }
 

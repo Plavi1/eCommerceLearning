@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/x5VuuDHiUV9kdrd+JXutfSo0NZSuMST/J9LZR+jFzbhwgr6OlAgQFTCZ2oWccXSPrFlW2MHiozSN+3ziB/tmg==",
+  "dgSpecHash": "zrg+tkBqfGqS2S7zV09rG3JRhaxXA/uCoyFU8MCxwUmryrpvKwOq9b5zAHHUN0qx/uXdoLeMHB9r2tRoj9F4Uw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Web\\Stripovi.Web.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Web\\Stripovi.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.4\\microsoft.aspnetcore.mvc.razor.extensions.5.0.4.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\5.0.4\\microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.4.nupkg.sha512",

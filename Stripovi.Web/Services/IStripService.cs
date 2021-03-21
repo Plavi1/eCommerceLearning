@@ -8,6 +8,6 @@ namespace Stripovi.Web.Services
 {
     public interface IStripService
     {
-        IEnumerable<Strip> GetStripove();
+        Task<IEnumerable<Strip>> GetStripove();
     }
 }

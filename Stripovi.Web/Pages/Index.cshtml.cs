@@ -23,19 +23,16 @@ namespace Stripovi.Web.Pages
             _logger = logger;
             this.stripService = stripService;
         }
-
+       
         public IEnumerable<Strip> Stripovi { get; set; }
         public string errorString { get; set; }
 
 
         public void OnGet()
         {
-            var sviStipovi = stripService.GetStripove();
-            if(sviStipovi != null)
-            {
-                Stripovi = sviStipovi;
-            }
-            else
+            Stripovi = stripService.GetStripove().Result;       // Proveri 
+            
+            if(Stripovi == null)
             {
                 errorString = "There was an error getting stripovi";
             }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj": {}
+    "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj": {
+    "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
         "projectName": "Stripovi.Api",
-        "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
+        "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\obj\\",
+        "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj": {
-                "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj"
+              "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj": {
+                "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj": {
+    "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
         "projectName": "Stripovi.Data",
-        "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
+        "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\obj\\",
+        "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

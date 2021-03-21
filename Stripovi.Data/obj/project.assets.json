@@ -5802,11 +5802,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
       "projectName": "Stripovi.Data",
-      "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
+      "projectPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\Stripovi.Data.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\obj\\",
+      "outputPath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

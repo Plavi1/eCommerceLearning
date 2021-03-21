@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GP/PqJ+C1SsWX2I0w+YdiBVLVtlGrzs98WMb9ygM5rlfiULe2LNib8P7aDInUd1fgKGmtsULmOoa+2fRrHMBNA==",
+  "dgSpecHash": "bVHjoxU2KF8IyUpahGTqyvKPBMSaNjGD/Lh6+mg2tjXp6DRfgXY/lmnl9uudkQwjVO1T0Jm8kkngzFSbPC9pqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\ASP.NET Core MVC VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Desktop\\ASP.NET Core  VEZBA\\eCommerce\\eCommerce\\Stripovi.Api\\Stripovi.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
