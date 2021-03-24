@@ -1,0 +1,43 @@
+﻿@page
+@model Stripovi.Web.Pages.KorpaModel
+@{
+    ViewData["Title"] = "Korpa";
+}
+
+@if (TempData["message"] != null)
+{
+    <div class="col-sm-12 text-center">
+        <div class="alert alert-danger">
+            @TempData["message"]
+        </div>
+    </div>
+}
+
+@if (Model.StripoviuKorpi.Any())
+{
+    @foreach (var item in Model.StripoviuKorpi)
+    {
+        <form method="post" asp-page-handler="Obrisi">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Naziv</h5>
+                    <ul>
+                        <li>Autor:@item.Autor</li>
+                        <li>Izdavac: @item.Izdavac</li>
+                        <li>Jezik: @item.Jezik</li>
+                        <li>Stanje: @item.Stanje</li>
+                        <li>Godina izdanja: @item.GodinaIzdanja</li>
+                        <li><b>Cena: @item.Cena</b></li>
+                    </ul>
+                    <input hidden asp-for="IdStripaObrisi" value="@item.Id" />
+                    <button type="submit" class="btn btn-primary">Obrisi</button>
+                </div>
+            </div>
+        </form>
+    }
+}
+else
+{
+    <p>Nema stripova u korpi</p>
+}

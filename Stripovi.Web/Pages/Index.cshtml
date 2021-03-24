@@ -7,25 +7,33 @@
 
 <div class="text-center">
 
-    @if (Model.Stripovi != null)
+    @if (Model.Stripovi.Any())
     {
         @foreach (var item in Model.Stripovi)
         {
-            <ul>
-                <li>Naziv:@item.Naziv</li>
-                <li>Autor:@item.Autor</li>
-                <li>.................</li>
-            </ul>
-
+            <form method="post">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Naziv</h5>
+                        <ul>
+                            <li>Autor:@item.Autor</li>
+                            <li>Izdavac: @item.Izdavac</li>
+                            <li>Jezik: @item.Jezik</li>
+                            <li>Stanje: @item.Stanje</li>
+                            <li>Godina izdanja: @item.GodinaIzdanja</li>
+                            <li><b>Cena: @item.Cena</b></li>
+                        </ul>
+                        <input hidden asp-for="IdStripaZaKorpu" value="@item.IdStripa" />
+                        <button type="submit" class="btn btn-primary">Stavi u korpu</button>
+                    </div>
+                </div>
+            </form>
         }
     }
     else
     {
-     <a>abv: @Model.errorString  </a>
+     <a>Trenutno nema Stripova u prodaji! </a>
     }
-
-
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 

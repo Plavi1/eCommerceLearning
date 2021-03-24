@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripovi.Api", "Stripovi.Api\Stripovi.Api.csproj", "{EEE9E701-F605-4D8B-B289-9CABFD7650DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripovi.Api", "Stripovi.Api\Stripovi.Api.csproj", "{EEE9E701-F605-4D8B-B289-9CABFD7650DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripovi.Data", "Stripovi.Data\Stripovi.Data.csproj", "{C4988D19-4883-47CB-9731-6A33452CB8C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripovi.Data", "Stripovi.Data\Stripovi.Data.csproj", "{C4988D19-4883-47CB-9731-6A33452CB8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripovi.Web", "Stripovi.Web\Stripovi.Web.csproj", "{9D5DF855-7698-418B-8F17-012CFE1DC2C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripovi.Web", "Stripovi.Web\Stripovi.Web.csproj", "{9D5DF855-7698-418B-8F17-012CFE1DC2C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,14 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Stripovi.Web.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Stripovi.Web.MockData;
+using Stripovi.Web.MockData.MockKorpaRepository;
+using Stripovi.Web.MockData.MockStripRepository;
 
 namespace Stripovi.Web
 {
@@ -25,13 +22,20 @@ namespace Stripovi.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddHttpClient<IStripService, StripService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:44387/api/");
-            });
+
+            services.AddScoped<IStripRepository, SQLStripRepository>();
+            services.AddScoped<IKorpaRepository, SQLKorpaRepository>();
+
+            services.AddAutoMapper(typeof(StripProfile));
+            // services.AddScoped<IStripoviService, StripoviService>();
+            // services.AddHttpClient("Stripovi",client =>
+            // {
+            //   client.BaseAddress = new Uri("https://localhost:44387/api/");
+            // });
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,6 +53,8 @@ namespace Stripovi.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
