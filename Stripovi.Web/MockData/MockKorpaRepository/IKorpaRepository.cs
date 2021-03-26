@@ -12,7 +12,8 @@ namespace Stripovi.Web.MockData.MockKorpaRepository
         Task<Korpa> GetKorpa(int korpaId);
         Task<Korpa> AddKorpa(Korpa korpa);
         Task<Korpa> UpdateKorpa(Korpa korpaPromena);
-        Task<Korpa> DeleteKorpa(int korpaId);
+        Task<Korpa> DeleteStripUKorpi(int stripid);
+        Task<Korpa> DeleteSveUKorpi(string userId);
         int UserBrojStripovaUkorpi(string userId);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Stripovi.Web.MockData;
 using Stripovi.Web.MockData.MockKorpaRepository;
+using Stripovi.Web.MockData.MockPorudzbinaRepository;
 using Stripovi.Web.MockData.MockStripRepository;
 
 namespace Stripovi.Web.Pages
@@ -17,52 +19,111 @@ namespace Stripovi.Web.Pages
     public class KorpaModel : PageModel
     {
         private readonly SignInManager<IdentityUser> signInManager;
-        private readonly IStripRepository stripRepository;
         private readonly IKorpaRepository korpaRepository;
-        private readonly IMapper mapper;
+        private readonly IPorudzbinaRepository porudzbinaRepository;
 
         public KorpaModel(SignInManager<IdentityUser> signInManager,
-                          IStripRepository stripRepository,
                           IKorpaRepository korpaRepository,
-                          IMapper mapper)
+                          IPorudzbinaRepository porudzbinaRepository)
         {
             this.signInManager = signInManager;
-            this.stripRepository = stripRepository;
             this.korpaRepository = korpaRepository;
-            this.mapper = mapper;
+            this.porudzbinaRepository = porudzbinaRepository;
         }
-
-        [BindProperty]
         public int IdStripaObrisi { get; set; }
-
+        public int UkupnaCena { get; set; }
+        public InputBuyConfirmed BuyConfirmed { get; set; }
         public IEnumerable<Korpa> StripoviuKorpi { get; set; }
 
+        public class InputBuyConfirmed
+        {
+            [Required]
+            public string Grad { get; set; }
+
+            [Required]
+            [Display(Name = "Postanski Broj")]
+            public int PostanskiBroj { get; set; }
+
+            [Required]
+            public string Ulica { get; set; }
+
+            [Required]
+            [Display(Name = "Kucni Broj")]
+            public string KucniBroj { get; set; }
+            public string Placanje { get; set; }
+            public string Pitanje { get; set; }
+            [Required]
+            [Range(typeof(bool), "true", "true", ErrorMessage = "Nisi stiklirao!")]
+            public bool SlozenSaUslovima { get; set; }
+            public List<int> IdPorucenihStripova { get; set; }
+            public int UkupnaCena { get; set; }
+        }
+        private async Task GetSveInformacije()
+        {
+            string ulogvanUser = signInManager.UserManager.GetUserId(User);
+
+            var stripoviuKorpi = await korpaRepository.UserStripoviuKorpi(ulogvanUser);
+
+            int ukupnaCena = 0;
+
+            foreach (var item in stripoviuKorpi)
+            {
+                ukupnaCena += item.Cena;
+            }
+
+            UkupnaCena = ukupnaCena;
+            StripoviuKorpi = stripoviuKorpi;
+        }
+        //-----------------------------------------OnGet------------------------------------------------
         public async Task OnGet()
         {
-            var ulogvanUser = signInManager.UserManager.GetUserId(User);
-
-            StripoviuKorpi = await korpaRepository.UserStripoviuKorpi(ulogvanUser);
+            await GetSveInformacije();
         }
-
-        public async Task<IActionResult> OnPost()
+        //-----------------------------------------OnPostObrisi------------------------------------------------
+        public async Task OnPostObrisi(int IdStripaObrisi)
         {
             var selektovanStripuKorpi = await korpaRepository.GetKorpa(IdStripaObrisi);
-            
-            if(selektovanStripuKorpi != null)
+
+            if (selektovanStripuKorpi != null)
             {
-                Strip vracenStrip = new Strip();
-                vracenStrip = mapper.Map(selektovanStripuKorpi, vracenStrip);
-
-                var result2 = await korpaRepository.DeleteKorpa(selektovanStripuKorpi.Id);
-
-                if (result2 == null)
+                var result = await korpaRepository.DeleteStripUKorpi(selektovanStripuKorpi.IdStripa);
+                if (result == null)
                 {
-                    return NotFound();
+                    NotFound();
                 }
                 TempData["message"] = "Strip je obrisan iz korpe!";
-                return RedirectToAction("OnGetAsync");
+                await GetSveInformacije();
             }
-            return RedirectToAction("OnGetAsync");
+            await GetSveInformacije();
+        }
+
+        //-----------------------------------------OnPostPostvrdi------------------------------------------------
+        public async Task<IActionResult> OnPostPotvrdi(InputBuyConfirmed BuyConfirmed)
+        {
+            if (ModelState.IsValid)
+            {
+                string userId = signInManager.UserManager.GetUserId(User);
+
+                Porudzbina porudzbina = new Porudzbina
+                {
+                    UserId = userId,
+                    BrojPorucenihStripova = BuyConfirmed.IdPorucenihStripova.Count,
+                    Pitanje = BuyConfirmed.Pitanje,
+                    Grad = BuyConfirmed.Grad,
+                    KucniBroj = BuyConfirmed.KucniBroj,
+                    Placanje = BuyConfirmed.Placanje,
+                    UkupnaCena = BuyConfirmed.UkupnaCena,
+                    Ulica = BuyConfirmed.Ulica,
+                    PostanskiBroj = BuyConfirmed.PostanskiBroj
+                };
+                await porudzbinaRepository.AddPorudzbinu(porudzbina, BuyConfirmed.IdPorucenihStripova);
+                await korpaRepository.DeleteSveUKorpi(userId);
+                TempData["message"] = "Uspesno ste izvrsili porudzbinu!";
+                return RedirectToPage("Index");
+            }
+
+            await GetSveInformacije();
+            return Page();
         }
     }
 }

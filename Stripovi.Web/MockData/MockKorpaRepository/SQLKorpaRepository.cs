@@ -24,15 +24,32 @@ namespace Stripovi.Web.MockData.MockKorpaRepository
             return result.Entity;
         }
 
-        public async Task<Korpa> DeleteKorpa(int korpaId)
+        public async Task<Korpa> DeleteSveUKorpi(string userId)
         {
-            var result = await context.Korpa
-               .FirstOrDefaultAsync(e => e.Id == korpaId);
+
+            var result = context.Korpa.ToList().Where(e => e.UserId == userId);
+
             if (result != null)
             {
+                foreach(var item in result)
+                {
+                 context.Korpa.Remove(item);
+                 await context.SaveChangesAsync();
+                }
+            }
+            return null;
+        }
+
+        public async Task<Korpa> DeleteStripUKorpi(int stripid)
+        {
+            var result = context.Korpa.FirstOrDefault(e => e.IdStripa == stripid);
+
+            if (result != null)
+            {    
                 context.Korpa.Remove(result);
                 await context.SaveChangesAsync();
                 return result;
+
             }
             return null;
         }
@@ -68,8 +85,7 @@ namespace Stripovi.Web.MockData.MockKorpaRepository
 
         public int UserBrojStripovaUkorpi(string userId)
         {
-            int broj = context.Korpa.ToList().Where(e => e.UserId == userId).Count();
-            return broj;
+            return context.Korpa.ToList().Where(e => e.UserId == userId).Count();
         }
 
         public async Task<IEnumerable<Korpa>> UserStripoviuKorpi(string userId)

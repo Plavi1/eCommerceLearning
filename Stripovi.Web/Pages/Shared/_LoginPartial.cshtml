@@ -1,9 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Stripovi.Web.MockData.MockKorpaRepository
+@using Stripovi.Web.MockData.MockPorudzbinaRepository
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-@inject IKorpaRepository userRepo
+@inject IKorpaRepository korpaRepo
+@inject IPorudzbinaRepository porudzbinaRepo
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
@@ -17,8 +19,14 @@
             </form>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Korpa">Korpa<span>@userRepo.UserBrojStripovaUkorpi(UserManager.GetUserId(User))</span></a>
+            <a class="nav-link text-dark" asp-area="" asp-page="/Korpa">Korpa<span>@korpaRepo.UserBrojStripovaUkorpi(UserManager.GetUserId(User))</span></a>
         </li>
+        @if (porudzbinaRepo.UserBrojPorudzbina(UserManager.GetUserId(User)) != 0)
+         {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/StatusPorudzbine">Status Porudzbine</a>
+            </li>
+         }
     }
     else
     {

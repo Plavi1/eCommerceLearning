@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stripovi.Web.MockData;
 using Stripovi.Web.MockData.MockKorpaRepository;
+using Stripovi.Web.MockData.MockPorudzbinaRepository;
 using Stripovi.Web.MockData.MockStripRepository;
 
 namespace Stripovi.Web
@@ -23,8 +25,16 @@ namespace Stripovi.Web
         {
             services.AddRazorPages();
 
+            services.AddScoped<IPorudzbinaRepository, SQLPorudzbinaRepository>();
             services.AddScoped<IStripRepository, SQLStripRepository>();
             services.AddScoped<IKorpaRepository, SQLKorpaRepository>();
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.LowercaseUrls = true;
+                options.LowercaseQueryStrings = true;
+                options.AppendTrailingSlash = true;
+            });
 
             services.AddAutoMapper(typeof(StripProfile));
             // services.AddScoped<IStripoviService, StripoviService>();

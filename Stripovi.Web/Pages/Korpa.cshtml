@@ -15,27 +15,103 @@
 
 @if (Model.StripoviuKorpi.Any())
 {
-    @foreach (var item in Model.StripoviuKorpi)
-    {
-        <form method="post" asp-page-handler="Obrisi">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Naziv</h5>
-                    <ul>
-                        <li>Autor:@item.Autor</li>
-                        <li>Izdavac: @item.Izdavac</li>
-                        <li>Jezik: @item.Jezik</li>
-                        <li>Stanje: @item.Stanje</li>
-                        <li>Godina izdanja: @item.GodinaIzdanja</li>
-                        <li><b>Cena: @item.Cena</b></li>
-                    </ul>
-                    <input hidden asp-for="IdStripaObrisi" value="@item.Id" />
-                    <button type="submit" class="btn btn-primary">Obrisi</button>
+    <div class="card" style="width: 100%; margin-bottom: 100px;">
+        <div class="row">
+            @foreach (var item in Model.StripoviuKorpi)
+            {
+                <form method="post" asp-page-handler="Obrisi">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Naziv</h5>
+                            <ul>
+                                <li>Autor:@item.Autor</li>
+                                <li>Izdavac: @item.Izdavac</li>
+                                <li>Jezik: @item.Jezik</li>
+                                <li>Stanje: @item.Stanje</li>
+                                <li>Godina izdanja: @item.GodinaIzdanja</li>
+                                <li><b>Cena: @item.Cena</b></li>
+                            </ul>
+                            <input hidden asp-for="IdStripaObrisi" value="@item.Id" />
+                            <button type="submit" class="btn btn-primary">Obrisi</button>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+ 
+            <div class="card" style="width: 100%">
+                <div>Ukupna cena je: @Model.UkupnaCena</div>
+            </div>
+    </div>
+
+    <form method="post" asp-page-handler="Potvrdi">
+        <div class="card" style="width: 100%; margin-bottom: 100px;">
+            <h4>Adresa isporuke</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row" style="width: 100%">
+                <div class="form-group col-md-6">
+                    <label asp-for="@Model.BuyConfirmed.Grad"></label>
+                    <input asp-for="@Model.BuyConfirmed.Grad" class="form-control" />
+                    <span asp-validation-for="@Model.BuyConfirmed.Grad" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="@Model.BuyConfirmed.PostanskiBroj"></label>
+                    <input asp-for="@Model.BuyConfirmed.PostanskiBroj" class="form-control" />
+                    <span asp-validation-for="@Model.BuyConfirmed.PostanskiBroj" class="text-danger"></span>
                 </div>
             </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="@Model.BuyConfirmed.Ulica"></label>
+                    <input asp-for="@Model.BuyConfirmed.Ulica" class="form-control" />
+                    <span asp-validation-for="@Model.BuyConfirmed.Ulica" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="@Model.BuyConfirmed.KucniBroj"></label>
+                    <input asp-for="@Model.BuyConfirmed.KucniBroj" class="form-control" />
+                    <span asp-validation-for="@Model.BuyConfirmed.KucniBroj" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="width: 100%; margin-bottom: 100px;">
+            <h4>Placanje</h4>
+            <hr />
+            <select asp-for="BuyConfirmed.Placanje">
+                <option value="Karticom">Platnom karticom</option>
+                <option value="Pouzecem">Placanje pouzecem</option>
+                <option value="Uplatnica">Placanje uplatnicom</option>
+            </select>
+        </div>
+        <div class="card" style="width: 100%; margin-bottom: 100px;">
+            <h4>Imate pitanje?</h4>
+            <hr />
+            <textarea id="message" asp-for="BuyConfirmed.Pitanje" placeholder="Message"></textarea>
+        </div>
+        <div class="card" style="width: 100%; margin-bottom: 100px;">
+            <h4>Ukupno za placanje</h4>
+            <hr />
+            <div>Ukupno: @Model.UkupnaCena</div>
+            <div>Usteda: ...</div>
+            <div>Troskovi dostave: Besplatni troskovi dostave</div>
+            <div><b>Ukupno za placanje sa PDV-om: @Model.UkupnaCena</b></div>
+        </div>
+        <div class="checkbox">
+            <label asp-for="BuyConfirmed.SlozenSaUslovima">
+                <input asp-for="BuyConfirmed.SlozenSaUslovima" />
+                Klikom na dugme, slažeš se sa Uslovima korišćenja i prodaje.
+            </label>
+            <span asp-validation-for="BuyConfirmed.SlozenSaUslovima" class="text-danger"></span>
+        </div>
+        @foreach (var item in Model.StripoviuKorpi)
+        {
+            <input hidden asp-for="BuyConfirmed.IdPorucenihStripova" value="@item.IdStripa" />
+        }
+        <input hidden asp-for="BuyConfirmed.UkupnaCena" value="@Model.UkupnaCena" />
+            <button type="submit" class="btn btn-primary">Potvrdi</button>
         </form>
-    }
 }
 else
 {

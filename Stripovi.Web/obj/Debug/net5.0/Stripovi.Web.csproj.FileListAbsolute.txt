@@ -856,3 +856,5 @@ C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\bin\Deb
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Stripovi.Web.csprojAssemblyReference.cache
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\StatusPorudzbine.cshtml.g.cs

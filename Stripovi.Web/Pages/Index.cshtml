@@ -4,8 +4,15 @@
     ViewData["Title"] = "Home page";
 }
 
-
 <div class="text-center">
+    @if (TempData["message"] != null)
+    {
+        <div class="col-sm-12 text-center">
+            <div class="alert alert-success">
+                @TempData["message"]
+            </div>
+        </div>
+    }
 
     @if (Model.Stripovi.Any())
     {
@@ -33,7 +40,7 @@
     }
     else
     {
-     <a>Trenutno nema Stripova u prodaji! </a>
+        <a>Trenutno nema Stripova u prodaji! </a>
     }
 </div>
 
