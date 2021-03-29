@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,14 +17,20 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
     public class EditModel : PageModel
     {
         private readonly UserDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public EditModel(UserDbContext context)
+        public EditModel(UserDbContext context,
+                        IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
         public Strip Strip { get; set; }
+
+        [BindProperty]
+        public IFormFile Photo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,39 +48,63 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Strip).State = EntityState.Modified;
-
-            try
+            if (Photo != null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StripExists(Strip.IdStripa))
+                if (Strip.imgRoute != null)
                 {
-                    return NotFound();
+                    string filePath = Path.Combine(webHostEnvironment.WebRootPath,
+                        "images", Strip.imgRoute);
+                    System.IO.File.Delete(filePath);
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return RedirectToPage("./Index");
+                Strip.imgRoute = ProcessUploadedFile();
+            }
+                _context.Attach(Strip).State = EntityState.Modified;
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!StripExists(Strip.IdStripa))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToPage("./Index");
         }
 
         private bool StripExists(int id)
         {
             return _context.Strip.Any(e => e.IdStripa == id);
+        }
+
+        private string ProcessUploadedFile()      
+        {
+            string uniqueFileName = null;
+
+            if (Photo != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + Photo.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    Photo.CopyTo(fileStream);
+                }
+            }
+
+            return uniqueFileName;
         }
     }
 }

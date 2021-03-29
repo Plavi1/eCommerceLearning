@@ -26,7 +26,6 @@ namespace Stripovi.Web.MockData
         public string GodinaIzdanja { get; set; }
         [Required]
         public int Cena { get; set; }
-        [Required]
         public string imgRoute { get; set; }
     }
 }

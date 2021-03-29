@@ -25,9 +25,11 @@
     {
         @foreach (var item in Model.Stripovi)
         {
+            var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
             <form method="post">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <img class="imageThumbnail" src="@photoPath"
+                         asp-append-version="true" />
                     <div class="card-body">
                         <h5 class="card-title">@item.Naziv</h5>
                         <ul>

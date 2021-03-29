@@ -46,6 +46,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model.Strip) {
+    var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Naziv)
@@ -72,8 +73,9 @@
                 @Html.DisplayFor(modelItem => item.Cena)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.imgRoute)
-            </td>
+                <img class="card-img-top imageThumbnail" src="@photoPath"
+                     asp-append-version="true" />
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.IdStripa">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.IdStripa">Details</a> |

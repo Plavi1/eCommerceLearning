@@ -25,10 +25,9 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
             this.webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
             Strip = new Strip();
-            return Page();
         }
 
         public Strip Strip { get; set; }
@@ -50,7 +49,7 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
                         "images", strip.imgRoute);
                     System.IO.File.Delete(filePath);
                 }
-                Strip.imgRoute = ProcessUploadedFile();
+                strip.imgRoute = ProcessUploadedFile();
                 _context.Strip.Add(strip);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

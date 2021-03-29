@@ -7,19 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Stripovi.Web.Areas.Identity.Data;
 using Stripovi.Web.MockData;
+using Stripovi.Web.MockData.MockPorudzbinaRepository;
 
 namespace Stripovi.Web.Pages.Administrator.Porudzbine
 {
     public class DetailsModel : PageModel
     {
         private readonly UserDbContext _context;
+        private readonly IPorudzbinaRepository porudzbinaRepository;
 
-        public DetailsModel(UserDbContext context)
+        public DetailsModel(UserDbContext context, 
+                            IPorudzbinaRepository porudzbinaRepository)
         {
             _context = context;
+            this.porudzbinaRepository = porudzbinaRepository;
         }
 
         public Porudzbina Porudzbina { get; set; }
+        public IEnumerable<Strip> Stripovi { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,6 +40,9 @@ namespace Stripovi.Web.Pages.Administrator.Porudzbine
             {
                 return NotFound();
             }
+
+            Stripovi = await porudzbinaRepository.GetSveStripoveuPorudzbini(id.Value);
+
             return Page();
         }
     }
