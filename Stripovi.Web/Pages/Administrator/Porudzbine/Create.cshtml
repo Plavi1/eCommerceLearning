@@ -1,0 +1,79 @@
+﻿@page
+@model Stripovi.Web.Pages.Administrator.Porudzbine.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Porudzbina</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.UserId" class="control-label"></label>
+                <select asp-for="Porudzbina.UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.Grad" class="control-label"></label>
+                <input asp-for="Porudzbina.Grad" class="form-control" />
+                <span asp-validation-for="Porudzbina.Grad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.PostanskiBroj" class="control-label"></label>
+                <input asp-for="Porudzbina.PostanskiBroj" class="form-control" />
+                <span asp-validation-for="Porudzbina.PostanskiBroj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.Ulica" class="control-label"></label>
+                <input asp-for="Porudzbina.Ulica" class="form-control" />
+                <span asp-validation-for="Porudzbina.Ulica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.KucniBroj" class="control-label"></label>
+                <input asp-for="Porudzbina.KucniBroj" class="form-control" />
+                <span asp-validation-for="Porudzbina.KucniBroj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.Placanje" class="control-label"></label>
+                <input asp-for="Porudzbina.Placanje" class="form-control" />
+                <span asp-validation-for="Porudzbina.Placanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.Pitanje" class="control-label"></label>
+                <input asp-for="Porudzbina.Pitanje" class="form-control" />
+                <span asp-validation-for="Porudzbina.Pitanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.UkupnaCena" class="control-label"></label>
+                <input asp-for="Porudzbina.UkupnaCena" class="form-control" />
+                <span asp-validation-for="Porudzbina.UkupnaCena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.BrojPorucenihStripova" class="control-label"></label>
+                <input asp-for="Porudzbina.BrojPorucenihStripova" class="form-control" />
+                <span asp-validation-for="Porudzbina.BrojPorucenihStripova" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porudzbina.Status" class="control-label"></label>
+                <input asp-for="Porudzbina.Status" class="form-control" />
+                <span asp-validation-for="Porudzbina.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

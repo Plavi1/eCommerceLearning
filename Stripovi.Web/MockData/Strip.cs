@@ -10,14 +10,23 @@ namespace Stripovi.Web.MockData
     {
         [Key]
         public int IdStripa { get; set; }
+        [Required]
         public string Naziv { get; set; }
+        [Required]
         public string Izdavac { get; set; }
+        [Required]
         public string Autor { get; set; }
+        [Required]
         public DateTime VremePosta { get; set; }
+        [Required]
         public string Stanje { get; set; }
+        [Required]
         public string Jezik { get; set; }
+        [Required]
         public string GodinaIzdanja { get; set; }
+        [Required]
         public int Cena { get; set; }
+        [Required]
         public string imgRoute { get; set; }
     }
 }

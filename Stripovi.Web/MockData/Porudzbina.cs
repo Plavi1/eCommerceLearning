@@ -23,5 +23,6 @@ namespace Stripovi.Web.MockData
         public string Pitanje { get; set; }
         public int UkupnaCena { get; set; }
         public int BrojPorucenihStripova { get; set; }
+        public string Status { get; set; }
     }
 }

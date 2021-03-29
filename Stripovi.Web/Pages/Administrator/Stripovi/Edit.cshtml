@@ -1,0 +1,76 @@
+﻿@page
+@model Stripovi.Web.Pages.Administrator.Stripovi.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Strip</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Strip.IdStripa" />
+            <div class="form-group">
+                <label asp-for="Strip.Naziv" class="control-label"></label>
+                <input asp-for="Strip.Naziv" class="form-control" />
+                <span asp-validation-for="Strip.Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.Izdavac" class="control-label"></label>
+                <input asp-for="Strip.Izdavac" class="form-control" />
+                <span asp-validation-for="Strip.Izdavac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.Autor" class="control-label"></label>
+                <input asp-for="Strip.Autor" class="form-control" />
+                <span asp-validation-for="Strip.Autor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.VremePosta" class="control-label"></label>
+                <input asp-for="Strip.VremePosta" class="form-control" />
+                <span asp-validation-for="Strip.VremePosta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.Stanje" class="control-label"></label>
+                <input asp-for="Strip.Stanje" class="form-control" />
+                <span asp-validation-for="Strip.Stanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.Jezik" class="control-label"></label>
+                <input asp-for="Strip.Jezik" class="form-control" />
+                <span asp-validation-for="Strip.Jezik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.GodinaIzdanja" class="control-label"></label>
+                <input asp-for="Strip.GodinaIzdanja" class="form-control" />
+                <span asp-validation-for="Strip.GodinaIzdanja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.Cena" class="control-label"></label>
+                <input asp-for="Strip.Cena" class="form-control" />
+                <span asp-validation-for="Strip.Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strip.imgRoute" class="control-label"></label>
+                <input asp-for="Strip.imgRoute" class="form-control" />
+                <span asp-validation-for="Strip.imgRoute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

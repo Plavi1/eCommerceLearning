@@ -114,7 +114,8 @@ namespace Stripovi.Web.Pages
                     Placanje = BuyConfirmed.Placanje,
                     UkupnaCena = BuyConfirmed.UkupnaCena,
                     Ulica = BuyConfirmed.Ulica,
-                    PostanskiBroj = BuyConfirmed.PostanskiBroj
+                    PostanskiBroj = BuyConfirmed.PostanskiBroj,
+                    Status = "Pakovanje"
                 };
                 await porudzbinaRepository.AddPorudzbinu(porudzbina, BuyConfirmed.IdPorucenihStripova);
                 await korpaRepository.DeleteSveUKorpi(userId);

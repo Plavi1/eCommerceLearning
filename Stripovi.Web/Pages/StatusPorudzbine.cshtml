@@ -3,29 +3,66 @@
 @{
 }
 @{ int i = 1;}
-@if (Model.Porudzbine.Any())
+@if (TempData["message"] != null)
+{
+    <div class="col-sm-12 text-center">
+        <div class="alert alert-success">
+            @TempData["message"]
+        </div>
+    </div>
+}
+
+@if (Model.Porudzbina.Any())
 {
     <table class="table table-dark">
         <thead>
             <tr>
                 <th scope="col">Porudzbina</th>
-                <th scope="col">Broj Porucenih Stripova</th>
+                <th scope="col">Poruceni Stripovi</th>
                 <th scope="col">Cena Porudzbine</th>
+                <th scope="col">Status Posiljke</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-                @foreach (var item in Model.Porudzbine)
-                 {
-                        <tr>
-                            <td>@Convert.ToString(i++)</td>
-                            <td>@item.BrojPorucenihStripova</td>
-                            <td>@item.UkupnaCena</td>
-                        </tr>
-                 }
-            </tbody>
+            @foreach (var item in Model.Porudzbina)
+            {
+                <tr>
+                    <td>@Convert.ToString(i++)</td>
+                    <td>
+                        @foreach (var strip in item.Stripovi)
+                        {
+                            <p>Strip: @strip.Naziv (Izdavac:@strip.Izdavac)</p>
+                        }
+                    </td>
+                    <td>@item.Porudzbina.UkupnaCena</td>
+                    <td>@item.Porudzbina.Status</td>
+                    <td>
+                        <form method="post">
+                            <input hidden asp-for="IdPorudzbine" value="@item.Porudzbina.IdPorudzbine" />
+                            <span id="confirmDeleteSpan_@item.Porudzbina.IdPorudzbine" style="display:none">
+                                <span>Da li si siguran da zelis da obustavis posiljku?</span>
+                                <button type="submit" class="btn btn-danger">Da</button>
+                                <a href="#" class="btn btn-primary"
+                                   onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', false)">Ne</a>
+                            </span>
+                            <span id="deleteSpan_@item.Porudzbina.IdPorudzbine">
+                                <a href="#" class="btn btn-danger"
+                                   onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', true)">Obustavi</a>
+                            </span>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 }
 else
 {
-    <p>Trenutno nemas ni jednu porudzbinu</p>
+    <p>Trenutno nemate ni jednu porudzbinu</p>
+}
+
+
+@section Scripts {
+    <script src="~/js/Confirmation.js"></script>
 }

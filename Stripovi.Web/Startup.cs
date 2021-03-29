@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripovi.Web.Areas.Identity.Data;
 using Stripovi.Web.MockData;
 using Stripovi.Web.MockData.MockKorpaRepository;
 using Stripovi.Web.MockData.MockPorudzbinaRepository;
@@ -43,6 +46,12 @@ namespace Stripovi.Web
             //   client.BaseAddress = new Uri("https://localhost:44387/api/");
             // });
 
+            services.AddDbContext<UserDbContext>(options =>                                                                 //Kopirano iz IdentityHosta, jer je izbacivao error kada se Scaffolduje 
+                    options.UseSqlServer(Configuration.GetConnectionString("StripoviWebDbContextConnection")));                       
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<UserDbContext>();
         }
 
      

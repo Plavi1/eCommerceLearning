@@ -12,26 +12,26 @@ namespace Stripovi.Web.Areas.Identity.Data
     public class UserDbContext : IdentityDbContext<IdentityUser>
     {
        
-            public UserDbContext(DbContextOptions<UserDbContext> options)
-                : base(options)
-            {
-            }
-            public DbSet<Strip> Strip { get; set; }
-            public DbSet<Korpa> Korpa { get; set; }
-            public DbSet<Porudzbina> Porudzbina { get; set; }
-            public DbSet<StripInPorudzbina> StripInPorudzbina { get; set; }
-            protected override void OnModelCreating(ModelBuilder builder)
-            {
-                base.OnModelCreating(builder);
-                builder.SeedSuperAdmin();
-                builder.MockStripovi();
-                builder.Entity<StripInPorudzbina>().HasKey(e => new { e.IdPorudzbine, e.IdStripa });
+        public UserDbContext(DbContextOptions<UserDbContext> options)
+        : base(options)
+        {
+        }
+        public DbSet<Strip> Strip { get; set; }
+        public DbSet<Korpa> Korpa { get; set; }
+        public DbSet<Porudzbina> Porudzbina { get; set; }
+        public DbSet<StripInPorudzbina> StripInPorudzbina { get; set; }
 
-            foreach (var foreignKey in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))           
+        protected override void OnModelCreating(ModelBuilder builder)
+            {
+            base.OnModelCreating(builder);
+            builder.SeedSuperAdmin();
+            builder.MockStripovi();
+            builder.Entity<StripInPorudzbina>().HasKey(e => new { e.IdPorudzbine, e.IdStripa });
+
+            foreach (var foreignKey in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Cascade;
             }
         }
-   
     }
 }

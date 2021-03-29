@@ -148,15 +148,15 @@ namespace Stripovi.Web.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fa39328b-f678-43bd-8198-4dca49831e3d",
+                            ConcurrencyStamp = "4783d741-6bfa-48bb-b166-4b4a2ae17487",
                             Email = "Admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECZFO7Ykr5uDtDJdzh8A70+3ymNG4HlK6fxmNBINX07/eScqgaNwPLevtkwq3UxAjg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEInWRSPncS6SSfck0DZidtmOKzGlblIqa35o/COtvcDm6G8bimo5ZdWXAJGg8Ux/PA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ea0c4803-7d41-4486-9c09-33c9bb913b86",
+                            SecurityStamp = "e0e25e7b-3031-4ad7-8ca2-85687d18575a",
                             TwoFactorEnabled = false,
                             UserName = "Admin@admin.com"
                         });
@@ -324,6 +324,9 @@ namespace Stripovi.Web.Migrations
 
                     b.Property<int>("PostanskiBroj")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UkupnaCena")
                         .HasColumnType("int");

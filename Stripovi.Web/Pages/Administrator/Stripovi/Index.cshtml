@@ -1,0 +1,85 @@
+﻿@page 
+@model Stripovi.Web.Pages.Administrator.Stripovi.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Izdavac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].VremePosta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Stanje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Jezik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].GodinaIzdanja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strip[0].imgRoute)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Strip) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Izdavac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VremePosta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stanje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jezik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodinaIzdanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imgRoute)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdStripa">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdStripa">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdStripa">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Stripovi.Web.MockData;
 using Stripovi.Web.MockData.MockKorpaRepository;
+using Stripovi.Web.MockData.MockPorudzbinaRepository;
 using Stripovi.Web.MockData.MockStripRepository;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,21 @@ namespace Stripovi.Web.Pages
         private readonly IStripRepository stripRepository;
         private readonly IKorpaRepository korpaRepository;
         private readonly IMapper mapper;
+        private readonly IPorudzbinaRepository porudzbinaRepository;
 
         public IndexModel(ILogger<IndexModel> logger,
                           SignInManager<IdentityUser> signInManager,
                           IStripRepository stripRepository,
                           IKorpaRepository korpaRepository,
-                          IMapper mapper)
+                          IMapper mapper,
+                          IPorudzbinaRepository porudzbinaRepository)
         {
             _logger = logger;
             this.signInManager = signInManager;
             this.stripRepository = stripRepository;
             this.korpaRepository = korpaRepository;
             this.mapper = mapper;
+            this.porudzbinaRepository = porudzbinaRepository;
         }
        
         public IEnumerable<Strip> Stripovi { get; set; }
@@ -65,22 +69,31 @@ namespace Stripovi.Web.Pages
             if (signInManager.IsSignedIn(User))
             {
                 string ulogvanUser = signInManager.UserManager.GetUserId(User);
+                int brojPorudzbina = porudzbinaRepository.GetPorudzbine().Result.Where(e => e.UserId == ulogvanUser).Count();
 
-                var strip = await stripRepository.GetStrip(IdStripaZaKorpu);
-                if(strip != null)
+                if(brojPorudzbina < 3)
                 {
+                    var strip = await stripRepository.GetStrip(IdStripaZaKorpu);
 
-                    Korpa novaKorpa = new Korpa();
-                    novaKorpa = mapper.Map(strip, novaKorpa);
-                    novaKorpa.UserId = ulogvanUser;
-                       
+                    if(strip != null)
+                    {
+                        Korpa novaKorpa = new Korpa();
+                        novaKorpa = mapper.Map(strip, novaKorpa);
+                        novaKorpa.UserId = ulogvanUser;
                     
-                    await korpaRepository.AddKorpa(novaKorpa);
+                        await korpaRepository.AddKorpa(novaKorpa);
+                        return RedirectToAction("OnGetAsync");
+                    }
+                    TempData["error"] = "Strip nije pronadjen!";
+                    return RedirectToAction("OnGetAsync");
+                }
+                else
+                {
+                    TempData["error"] = "Maksimalni broj porudzbina je 3!";
                     return RedirectToAction("OnGetAsync");
                 }
 
             }
-            
             TempData["message"] = "Mora te se ulogovati pre nego sto izvrsite porudzbinu!";
             return Redirect("/Identity/Account/Login");
             

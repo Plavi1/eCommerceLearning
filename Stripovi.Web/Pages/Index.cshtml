@@ -13,7 +13,14 @@
             </div>
         </div>
     }
-
+    @if (TempData["error"] != null)
+    {
+        <div class="col-sm-12 text-center">
+            <div class="alert alert-danger">
+                @TempData["error"]
+            </div>
+        </div>
+    }
     @if (Model.Stripovi.Any())
     {
         @foreach (var item in Model.Stripovi)

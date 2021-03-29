@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Stripovi.Web.Areas.Identity.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,19 +34,12 @@ namespace Stripovi.Web.MockData.MockPorudzbinaRepository
         {
             var porudzbina = await context.Porudzbina
                 .FirstOrDefaultAsync(e => e.IdPorudzbine == porudzbinaId);
-            var stripInPorudzbina = context.StripInPorudzbina.ToList()
-                .Where(e => e.IdPorudzbine == porudzbinaId);
 
             if (porudzbina != null)
             {
                 context.Porudzbina.Remove(porudzbina);
                 await context.SaveChangesAsync();
 
-                foreach (var item in stripInPorudzbina)
-                {
-                    context.StripInPorudzbina.Remove(item);
-                    await context.SaveChangesAsync();
-                }
                 return porudzbina;
             }
             return null;

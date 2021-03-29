@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Stripovi.Web.MockData;
 using Stripovi.Web.MockData.MockPorudzbinaRepository;
+using Stripovi.Web.MockData.MockStripRepository;
 
 namespace Stripovi.Web.Pages
 {
@@ -21,13 +22,47 @@ namespace Stripovi.Web.Pages
             this.porudzbinaRepository = porudzbinaRepository;
             this.signInManager = signInManager;
         }
-        public IEnumerable<Porudzbina> Porudzbine { get; set; }
+        public List<KompletnaPorudzbini> Porudzbina { get; set; }
+        [BindProperty]
+        public int IdPorudzbine { get; set; }
+        public class KompletnaPorudzbini
+        {
+            public Porudzbina Porudzbina { get; set; }
+            public IEnumerable<Strip> Stripovi { get; set; }
+        }
+
         public async Task OnGet()
         {
             string userId = signInManager.UserManager.GetUserId(User);
-            var SvePorudzbine = await porudzbinaRepository.GetPorudzbine();
+            var UserPorudzbine = porudzbinaRepository.GetPorudzbine().Result.Where(e=> e.UserId == userId);
 
-            Porudzbine = SvePorudzbine.Where(e => e.UserId == userId);
+            List<KompletnaPorudzbini> kompletnaPorudzbina = new List<KompletnaPorudzbini>();
+
+            foreach (var item in UserPorudzbine)
+            {
+                KompletnaPorudzbini porudzbina = new KompletnaPorudzbini
+                {
+                    Porudzbina = item,
+                    Stripovi = await porudzbinaRepository.GetSveStripoveuPorudzbini(item.IdPorudzbine)
+                };
+                kompletnaPorudzbina.Add(porudzbina);
+            }
+            Porudzbina = kompletnaPorudzbina;
+        }
+        public async Task OnPost()
+        {
+            var selektovanaPorudzbina = await porudzbinaRepository.GetPorudzbinu(IdPorudzbine);
+
+            if (selektovanaPorudzbina != null)
+            {
+                var result = await porudzbinaRepository.DeletePorudzbinu(selektovanaPorudzbina.IdPorudzbine);
+                if (result == null)
+                {
+                    NotFound();
+                }
+                TempData["message"] = "Porudzbina je uspesno obustavljena!";
+            }
+            await OnGet();
         }
     }
 }
