@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stripovi.Web.Areas.Identity.Data;
 
 namespace Stripovi.Web.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class StripoviWebDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210330103606_PromenaVremena")]
+    partial class PromenaVremena
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,15 +150,15 @@ namespace Stripovi.Web.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1acd20a-dbb1-4d02-8603-dcc48684332f",
+                            ConcurrencyStamp = "092f7ab3-870e-460e-8945-d6bd1ada2df9",
                             Email = "Admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFDzfvl3TpBE1jLJdjDOxqlZdAMyEfuZilj6HssoVdBA1xr/nnfO8Fak90EWh3PT3A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENddR7Dq0nLzUCHSy7KRdsf96qj3hWse7ugvJZCCge3bs6dx1VfQ11YlXktM4fJD6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c0893888-67bc-4b28-9c14-75a9fd1551ad",
+                            SecurityStamp = "5054dea4-8272-4f9e-b241-c4c0273322f6",
                             TwoFactorEnabled = false,
                             UserName = "Admin@admin.com"
                         });
@@ -399,7 +401,7 @@ namespace Stripovi.Web.Migrations
                             Jezik = "Srpski",
                             Naziv = "Dilan Dog",
                             Stanje = "Novo",
-                            imgRoute = "DilanDog.jpg"
+                            imgRoute = ""
                         },
                         new
                         {
@@ -411,7 +413,7 @@ namespace Stripovi.Web.Migrations
                             Jezik = "Srpski",
                             Naziv = "Alan Ford",
                             Stanje = "Novo",
-                            imgRoute = "AlanFord.jpg"
+                            imgRoute = ""
                         },
                         new
                         {
@@ -423,7 +425,7 @@ namespace Stripovi.Web.Migrations
                             Jezik = "Srpski",
                             Naziv = "Blek",
                             Stanje = "Polovno",
-                            imgRoute = "Blek.jpg"
+                            imgRoute = ""
                         },
                         new
                         {
@@ -435,7 +437,7 @@ namespace Stripovi.Web.Migrations
                             Jezik = "Srpski",
                             Naziv = "Zagor",
                             Stanje = "Polovno",
-                            imgRoute = "Zagor.jpg"
+                            imgRoute = ""
                         });
                 });
 

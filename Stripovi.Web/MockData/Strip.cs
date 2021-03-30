@@ -17,8 +17,6 @@ namespace Stripovi.Web.MockData
         [Required]
         public string Autor { get; set; }
         [Required]
-        public DateTime VremePosta { get; set; }
-        [Required]
         public string Stanje { get; set; }
         [Required]
         public string Jezik { get; set; }

@@ -14,6 +14,9 @@
                 @Html.DisplayNameFor(model => model.Porudzbina[0].User)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Porudzbina[0].VremePosiljke)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Porudzbina[0].Grad)
             </th>
             <th>
@@ -48,6 +51,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VremePosiljke)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Grad)

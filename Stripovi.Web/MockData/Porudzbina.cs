@@ -24,5 +24,6 @@ namespace Stripovi.Web.MockData
         public int UkupnaCena { get; set; }
         public int BrojPorucenihStripova { get; set; }
         public string Status { get; set; }
+        public DateTime VremePosiljke { get; set; }
     }
 }

@@ -44,7 +44,6 @@ namespace Stripovi.Web.MockData.MockStripRepository
                 result.Naziv = stripPromena.Naziv;
                 result.Izdavac = stripPromena.Izdavac;
                 result.Autor = stripPromena.Autor;
-                result.VremePosta = stripPromena.VremePosta;
                 result.Stanje = stripPromena.Stanje;
                 result.Jezik = stripPromena.Jezik;
                 result.GodinaIzdanja = stripPromena.GodinaIzdanja;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Stripovi.Web.MockData;
 
 namespace Stripovi.Web.Pages.Administrator.Stripovi
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class CreateModel : PageModel
     {
         private readonly UserDbContext _context;
@@ -50,11 +52,10 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
                     System.IO.File.Delete(filePath);
                 }
                 strip.imgRoute = ProcessUploadedFile();
-                _context.Strip.Add(strip);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
             }
-            return Page();
+            _context.Strip.Add(strip);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
         }
         private string ProcessUploadedFile()      //Svaki uploadovan fajl ce biti razlicito sacuvan
         {

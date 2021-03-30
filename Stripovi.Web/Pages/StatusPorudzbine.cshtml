@@ -38,19 +38,26 @@
                     <td>@item.Porudzbina.UkupnaCena</td>
                     <td>@item.Porudzbina.Status</td>
                     <td>
-                        <form method="post">
-                            <input hidden asp-for="IdPorudzbine" value="@item.Porudzbina.IdPorudzbine" />
-                            <span id="confirmDeleteSpan_@item.Porudzbina.IdPorudzbine" style="display:none">
-                                <span>Da li si siguran da zelis da obustavis posiljku?</span>
-                                <button type="submit" class="btn btn-danger">Da</button>
-                                <a href="#" class="btn btn-primary"
-                                   onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', false)">Ne</a>
-                            </span>
-                            <span id="deleteSpan_@item.Porudzbina.IdPorudzbine">
-                                <a href="#" class="btn btn-danger"
-                                   onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', true)">Obustavi</a>
-                            </span>
-                        </form>
+                        @if (item.Porudzbina.Status != "Poslato")
+                        {
+                            <form method="post">
+                                <input hidden asp-for="IdPorudzbine" value="@item.Porudzbina.IdPorudzbine" />
+                                <span id="confirmDeleteSpan_@item.Porudzbina.IdPorudzbine" style="display:none">
+                                    <span>Da li si siguran da zelis da obustavis posiljku?</span>
+                                    <button type="submit" class="btn btn-danger">Da</button>
+                                    <a href="#" class="btn btn-primary"
+                                       onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', false)">Ne</a>
+                                </span>
+                                <span id="deleteSpan_@item.Porudzbina.IdPorudzbine">
+                                    <a href="#" class="btn btn-danger"
+                                       onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', true)">Obustavi</a>
+                                </span>
+                            </form>
+                        }
+                        else
+                        {
+                          <p>Ne mozete obustaviti kada je posiljka poslata</p>
+                        }
                     </td>
                 </tr>
             }

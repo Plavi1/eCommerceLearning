@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,13 +13,17 @@ using Stripovi.Web.MockData;
 
 namespace Stripovi.Web.Pages.Administrator.Stripovi
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class DeleteModel : PageModel
     {
         private readonly UserDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public DeleteModel(UserDbContext context)
+        public DeleteModel(UserDbContext context,
+            IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
@@ -46,9 +53,15 @@ namespace Stripovi.Web.Pages.Administrator.Stripovi
             }
 
             Strip = await _context.Strip.FindAsync(id);
-
             if (Strip != null)
             {
+                if (Strip.imgRoute != null)
+                {
+                    string filePath = Path.Combine(webHostEnvironment.WebRootPath,
+                        "images", Strip.imgRoute);
+                    System.IO.File.Delete(filePath);
+                }
+
                 _context.Strip.Remove(Strip);
                 await _context.SaveChangesAsync();
             }

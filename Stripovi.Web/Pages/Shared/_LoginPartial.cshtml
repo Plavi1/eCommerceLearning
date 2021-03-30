@@ -18,18 +18,19 @@
                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Korpa">Korpa<span>@korpaRepo.UserBrojStripovaUkorpi(UserManager.GetUserId(User))</span></a>
-        </li>
-        @if (porudzbinaRepo.UserBrojPorudzbina(UserManager.GetUserId(User)) != 0)
+        @if (SignInManager.IsSignedIn(User) && !User.IsInRole("SuperAdmin"))
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-page="/StatusPorudzbine">Status Porudzbine</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/Korpa">Korpa<span>@korpaRepo.UserBrojStripovaUkorpi(UserManager.GetUserId(User))</span></a>
             </li>
+            @if (porudzbinaRepo.UserBrojPorudzbina(UserManager.GetUserId(User)) != 0)
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/StatusPorudzbine">Status Porudzbine</a>
+                </li>
+            }
         }
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Administrator">Administrator</a>
-        </li>
+
     }
     else
     {

@@ -107,6 +107,7 @@ namespace Stripovi.Web.Pages
                 Porudzbina porudzbina = new Porudzbina
                 {
                     UserId = userId,
+                    VremePosiljke = DateTime.Now,
                     BrojPorucenihStripova = BuyConfirmed.IdPorucenihStripova.Count,
                     Pitanje = BuyConfirmed.Pitanje,
                     Grad = BuyConfirmed.Grad,

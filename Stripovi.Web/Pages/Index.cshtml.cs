@@ -45,10 +45,14 @@ namespace Stripovi.Web.Pages
         [BindProperty]
         public int IdStripaZaKorpu { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {  
             if (signInManager.IsSignedIn(User))
             {
+                if (User.IsInRole("SuperAdmin"))
+                {
+                  return RedirectToPage("Administrator");
+                }
                 var ulogvanUser = signInManager.UserManager.GetUserId(User);
 
                 Stripovi = await stripRepository.UserStripoviVanKorpe(ulogvanUser);
@@ -58,7 +62,8 @@ namespace Stripovi.Web.Pages
             {
              Stripovi = await stripRepository.GetStripove();
             }
-           
+
+            return Page();
             //  Stripovi = await stripoviService.GetStripove();  //1
         }
 

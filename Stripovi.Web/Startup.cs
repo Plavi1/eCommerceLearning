@@ -27,6 +27,7 @@ namespace Stripovi.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            
 
             services.AddScoped<IPorudzbinaRepository, SQLPorudzbinaRepository>();
             services.AddScoped<IStripRepository, SQLStripRepository>();
@@ -49,8 +50,13 @@ namespace Stripovi.Web
             services.AddDbContext<UserDbContext>(options =>                                                                 //Kopirano iz IdentityHosta, jer je izbacivao error kada se Scaffolduje 
                     options.UseSqlServer(Configuration.GetConnectionString("StripoviWebDbContextConnection")));                       
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+            services.AddDefaultIdentity<IdentityUser>(options => {
+                options.SignIn.RequireConfirmedAccount = false;      
+                options.Password.RequireLowercase = false;           
+                options.Password.RequireUppercase = false;           
+                options.Password.RequireNonAlphanumeric = false;     
+
+            })  .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<UserDbContext>();
         }
 

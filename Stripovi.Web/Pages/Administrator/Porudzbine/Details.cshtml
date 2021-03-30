@@ -8,98 +8,118 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Porudzbina</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.User.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.Grad)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.Grad)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.PostanskiBroj)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.PostanskiBroj)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.Ulica)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.Ulica)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.KucniBroj)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.KucniBroj)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.Placanje)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.Placanje)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.Pitanje)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.Pitanje)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.UkupnaCena)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.UkupnaCena)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.BrojPorucenihStripova)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.BrojPorucenihStripova)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Porudzbina.Status)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Porudzbina.Status)
-        </dd>
-        <dt class="col-sm-2">
-            Stripovi:
-        </dt>
-        <dd class="col-sm-10">
-            <div class="row">
-                @foreach (var item in Model.Stripovi)
-                {
-                    var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
-                    <div class="card" style="width: 18rem;">
-                        <img class="imageThumbnail" src="@photoPath"
-                             asp-append-version="true" />
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Naziv</h5>
-                            <ul>
-                                <li>Id-Stripa: @item.IdStripa</li>
-                                <li>Autor:@item.Autor</li>
-                                <li>Izdavac: @item.Izdavac</li>
-                                <li>Jezik: @item.Jezik</li>
-                                <li>Godina izdanja: @item.GodinaIzdanja</li>
-                                <li><b>Cena: @item.Cena</b></li>
-                            </ul>
+<form method="post">
+    <div>
+        <h4>Porudzbina</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.User.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.VremePosiljke)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.VremePosiljke)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.Grad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.Grad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.PostanskiBroj)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.PostanskiBroj)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.Ulica)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.Ulica)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.KucniBroj)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.KucniBroj)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.Placanje)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.Placanje)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.Pitanje)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.Pitanje)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.UkupnaCena)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.UkupnaCena)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.BrojPorucenihStripova)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Porudzbina.BrojPorucenihStripova)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Porudzbina.Status)
+            </dt>
+            <dd class="col-sm-10">
+                <select asp-for="Status">
+                    <option value="">@Html.DisplayFor(model => model.Porudzbina.Status)</option>
+                    @if (Model.Porudzbina.Status == "Pakovanje")
+                    {
+                        <option value="Poslato">Poslato</option>
+                    }
+                    else
+                    {
+                        <option value="Pakovanje">Pakovanje</option>
+                    }
+                </select>
+            </dd>
+            <dt class="col-sm-2">
+                Stripovi:
+            </dt>
+            <dd class="col-sm-10">
+                <div class="row">
+                    @foreach (var item in Model.Stripovi)
+                    {
+                        var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
+                        <div class="card" style="width: 18rem;">
+                            <img class="imageThumbnail" src="@photoPath"
+                                 asp-append-version="true" />
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Naziv</h5>
+                                <ul>
+                                    <li>Id-Stripa: @item.IdStripa</li>
+                                    <li>Autor:@item.Autor</li>
+                                    <li>Izdavac: @item.Izdavac</li>
+                                    <li>Jezik: @item.Jezik</li>
+                                    <li>Godina izdanja: @item.GodinaIzdanja</li>
+                                    <li><b>Cena: @item.Cena</b></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                }
-            </div>
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+                    }
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <input hidden asp-for="Porudzbina" value="@Model.Porudzbina" />
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</form>

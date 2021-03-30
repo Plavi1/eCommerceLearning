@@ -864,7 +864,6 @@ C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Deb
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Stripovi\Edit.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Stripovi\Index.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Stripovi\_ViewImports.cshtml.g.cs
-C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Create.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Delete.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Details.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Index.cshtml.g.cs
