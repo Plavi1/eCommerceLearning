@@ -2,7 +2,9 @@
 @model Stripovi.Web.Pages.KorpaModel
 @{
     ViewData["Title"] = "Korpa";
+    int i = 1;
 }
+<link rel="stylesheet" href="~/css/Korpa.css" />
 
 @if (TempData["message"] != null)
 {
@@ -15,43 +17,57 @@
 
 @if (Model.StripoviuKorpi.Any())
 {
-    <div class="card" style="width: 100%; margin-bottom: 100px;">
-        <div class="row">
-            @foreach (var item in Model.StripoviuKorpi)
-            {
-                var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
-                <form method="post" asp-page-handler="Obrisi">
-                    <div class="card" style="width: 18rem;">
-                        <img class="imageThumbnail" src="@photoPath"
-                             asp-append-version="true" />
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Naziv</h5>
-                            <ul>
-                                <li>Autor:@item.Autor</li>
-                                <li>Izdavac: @item.Izdavac</li>
-                                <li>Jezik: @item.Jezik</li>
-                                <li>Stanje: @item.Stanje</li>
-                                <li>Godina izdanja: @item.GodinaIzdanja</li>
-                                <li><b>Cena: @item.Cena</b></li>
-                            </ul>
-                            <input hidden asp-for="IdStripaObrisi" value="@item.Id" />
-                            <button type="submit" class="btn btn-primary">Obrisi</button>
-                        </div>
-                    </div>
-                </form>
-            }
-        </div>
- 
-            <div class="card" style="width: 100%">
-                <div>Ukupna cena je: @Model.UkupnaCena</div>
-            </div>
+    <div class="table-container">
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Br.</th>
+                    <th scope="col">Strip</th>
+                    <th scope="col">Naslov</th>
+                    <th scope="col">Izdavac</th>
+                    <th scope="col">Stanje</th>
+                    <th scope="col">God. Izdanja</th>
+                    <th scope="col">Jezik</th>
+                    <th scope="col">Cena</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StripoviuKorpi)
+                {
+                    var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
+                    <tr>
+                        <td>@Convert.ToString(i++)</td>
+                        <td><img src="@photoPath" alt="" asp-append-version="true"></td>
+                        <td>@item.Naziv</td>
+                        <td>@item.Izdavac</td>
+                        <td>@item.Stanje</td>
+                        <td>@item.GodinaIzdanja</td>
+                        <td>@item.Jezik</td>
+                        <td>@item.Cena</td>
+                        <td>
+                            <form method="post" asp-page-handler="Obrisi">
+                                <input hidden asp-for="IdStripaObrisi" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger">
+                                    <svg width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-
+    <div class="ukupno-container">
+        <p>Ukupna cena: <span>@Model.UkupnaCena</span>din</p>
+    </div>
     <form method="post" asp-page-handler="Potvrdi">
-        <div class="card" style="width: 100%; margin-bottom: 100px;">
+        <div class="adresa-container">
             <h4>Adresa isporuke</h4>
-            <hr />
-            <div class="row" style="width: 100%">
+            <div class="row">
                 <div class="form-group col-md-6">
                     <label asp-for="@Model.BuyConfirmed.Grad"></label>
                     <input asp-for="@Model.BuyConfirmed.Grad" class="form-control" />
@@ -76,30 +92,28 @@
                 </div>
             </div>
         </div>
-
-        <div class="card" style="width: 100%; margin-bottom: 100px;">
+        <div class="placanje-container">
             <h4>Placanje</h4>
-            <hr />
-            <select asp-for="BuyConfirmed.Placanje">
+            <select asp-for="BuyConfirmed.Placanje" class="form-group col-md-12" >
                 <option value="Karticom">Platnom karticom</option>
                 <option value="Pouzecem">Placanje pouzecem</option>
                 <option value="Uplatnica">Placanje uplatnicom</option>
             </select>
         </div>
-        <div class="card" style="width: 100%; margin-bottom: 100px;">
+        <div class="pitanje-container">
             <h4>Imate pitanje?</h4>
-            <hr />
-            <textarea id="message" asp-for="BuyConfirmed.Pitanje" placeholder="Message"></textarea>
+            <textarea class="form-group col-md-12" id="message" asp-for="BuyConfirmed.Pitanje" placeholder="Message"></textarea>
         </div>
-        <div class="card" style="width: 100%; margin-bottom: 100px;">
-            <h4>Ukupno za placanje</h4>
-            <hr />
-            <div>Ukupno: @Model.UkupnaCena</div>
-            <div>Usteda: ...</div>
-            <div>Troskovi dostave: Besplatni troskovi dostave</div>
-            <div><b>Ukupno za placanje sa PDV-om: @Model.UkupnaCena</b></div>
+        <div class="sazetak-container">
+            <ul>
+                <li><h4>Ukupno za placanje:</h4></li>
+                <li>Ukupno: @Model.UkupnaCena din</li>
+                <li>Usteda: 0din</li>
+                <li>Troskovi dostave: Besplatni troskovi dostave</li>
+                <li><span>Ukupno za placanje sa PDV-om:</span> @Model.UkupnaCena din</li>
+            </ul>
         </div>
-        <div class="checkbox">
+        <div class="checkbox-container">
             <label asp-for="BuyConfirmed.SlozenSaUslovima">
                 <input asp-for="BuyConfirmed.SlozenSaUslovima" />
                 Klikom na dugme, slažeš se sa Uslovima korišćenja i prodaje.
@@ -111,8 +125,10 @@
             <input hidden asp-for="BuyConfirmed.IdPorucenihStripova" value="@item.IdStripa" />
         }
         <input hidden asp-for="BuyConfirmed.UkupnaCena" value="@Model.UkupnaCena" />
-            <button type="submit" class="btn btn-primary">Potvrdi</button>
-        </form>
+        <div class="btn-container">
+            <button type="submit" class="btn-action">Potvrdi</button>
+        </div>
+    </form>
 }
 else
 {

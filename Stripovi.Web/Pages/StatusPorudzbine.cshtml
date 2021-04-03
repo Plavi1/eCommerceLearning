@@ -14,7 +14,7 @@
 
 @if (Model.Porudzbina.Any())
 {
-    <table class="table table-dark">
+   <table class="table table-bordered table-dark">
         <thead>
             <tr>
                 <th scope="col">Porudzbina</th>
@@ -43,7 +43,7 @@
                             <form method="post">
                                 <input hidden asp-for="IdPorudzbine" value="@item.Porudzbina.IdPorudzbine" />
                                 <span id="confirmDeleteSpan_@item.Porudzbina.IdPorudzbine" style="display:none">
-                                    <span>Da li si siguran da zelis da obustavis posiljku?</span>
+                                    <span>Da li si siguran da zelis da obustavis posiljku?</span><br />
                                     <button type="submit" class="btn btn-danger">Da</button>
                                     <a href="#" class="btn btn-primary"
                                        onclick="confirmDelete('@item.Porudzbina.IdPorudzbine', false)">Ne</a>
@@ -56,7 +56,7 @@
                         }
                         else
                         {
-                          <p>Ne mozete obustaviti kada je posiljka poslata</p>
+                          <p><b>Ne mozete obustaviti</b><br>kada je posiljka poslata</p>
                         }
                     </td>
                 </tr>

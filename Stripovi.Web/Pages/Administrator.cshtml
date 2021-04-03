@@ -3,5 +3,95 @@
 @{
 }
 
-<a class="btn btn-primary" asp-page="Administrator/Stripovi/Index">Stripovi</a>
-<a class="btn btn-primary" asp-page="Administrator/Porudzbine/Index">Porudzbine</a>
+<style>
+    .karta-stats {
+        padding-top: 1em;
+    }
+
+    .plava {
+        border-left: 10px solid;
+        border-left-color: dodgerblue;
+    }
+
+    .zuta {
+        border-left: 10px solid;
+        border-left-color: orange;
+    }
+
+    .zelena {
+        border-left: 10px solid;
+        border-left-color: forestgreen;
+    }
+
+    .crvena {
+        border-left: 10px solid;
+        border-left-color: red;
+    }
+
+    h6 {
+        margin-top: -20px;
+        font-weight: bold;
+    }
+
+    .karta-funkcija {
+        padding-top: 1em;
+    }
+    .card {
+        background-color: #53354A;
+    }
+    .card-header {
+        background-color: #903749;
+    }
+</style>
+<div class="text-center">
+        <h1 class="display-4"><b>Glavni interfejs</b></h1>
+        <h4> <b style="color:red">ZA ADMINE</b></h4>
+        <hr />
+</div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="karta-stats">
+                <div class="card plava shadow rounded">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color:dodgerblue">
+                            Broj Registrovanih Clanova
+                        </h6>
+                        <h4>@Model.brojRegistrovanihClanova</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="karta-stats">
+                <div class="card zuta shadow rounded">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color:orange">
+                            Broj Porudzbina
+                        </h6>
+                        <h4>@Model.brojPorudzbina</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="karta-stats">
+                <div class="card zelena shadow rounded">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color:forestgreen">
+                            Broj Stripova u Prodaji
+                        </h6>
+                        <h4>@Model.brojStripova</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 karta-funkcija">
+            <div class="card text-center shadow rounded" style="padding-bottom:52px;">
+                <div class="card-header">
+                    <h3>Funkcije</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center" style="padding-top:10px">
+                        <a class="btn btn-primary" asp-page="Administrator/Stripovi/Index">Stripovi</a>
+                        <a class="btn btn-primary" asp-page="Administrator/Porudzbine/Index">Porudzbine</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
