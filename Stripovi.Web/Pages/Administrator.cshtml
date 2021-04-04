@@ -32,7 +32,6 @@
         margin-top: -20px;
         font-weight: bold;
     }
-
     .karta-funkcija {
         padding-top: 1em;
     }
@@ -41,6 +40,15 @@
     }
     .card-header {
         background-color: #903749;
+    }
+    .komande{
+        display:flex;
+        flex-direction:column;
+        width: 9em;
+        margin: auto;
+    }
+    .komande a{
+        margin-top: 1em;
     }
 </style>
 <div class="text-center">
@@ -87,9 +95,10 @@
                     <h3>Funkcije</h3>
                 </div>
                 <div class="card-body">
-                    <div class="text-center" style="padding-top:10px">
+                    <div class="komande" style="padding-top:10px">
                         <a class="btn btn-primary" asp-page="Administrator/Stripovi/Index">Stripovi</a>
                         <a class="btn btn-primary" asp-page="Administrator/Porudzbine/Index">Porudzbine</a>
+                        <a class="btn btn-success" asp-page="administrator/stripovi/create/">Registruj Strip</a>
                     </div>
                 </div>
             </div>

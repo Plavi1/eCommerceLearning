@@ -14,5 +14,6 @@ namespace Stripovi.Web.MockData.MockStripRepository
         Task<Strip> AddStrip(Strip strip);
         Task<Strip> UpdateStrip(Strip stripPromena);
         Task<Strip> DeleteStrip(int stripId);
+        Task<IEnumerable<Strip>> Search(string naslov, string userId);
     }
 }

@@ -53,10 +53,10 @@ namespace Stripovi.Web.Areas.Identity.Data
         {
             
             List<Strip> stripList = new List<Strip>(){
-                new Strip(){IdStripa = 1 ,Autor = "Ticijano Sklavi", Naziv = "Dilan Dog", GodinaIzdanja = "2006", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 300, Stanje="Novo", imgRoute = "DilanDog.jpg" },
-                new Strip(){IdStripa = 2 ,Autor = "Max Bunker ", Naziv = "Alan Ford", GodinaIzdanja = "1995", Jezik = "Srpski", Izdavac = "Vsdada", Cena = 250, Stanje="Novo", imgRoute = "AlanFord.jpg" },
-                new Strip(){IdStripa = 3 ,Autor = "EsseGesse", Naziv = "Blek", GodinaIzdanja = "1999", Jezik = "Srpski", Izdavac = "Abcvasld", Cena = 300, Stanje="Polovno", imgRoute = "Blek.jpg" },
-                new Strip(){IdStripa = 4 ,Autor = "Serdjo Boneli", Naziv = "Zagor", GodinaIzdanja = "2012", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 100, Stanje="Polovno", imgRoute = "Zagor.jpg" },
+                new Strip(){IdStripa = 1, Naziv = "Dilan Dog",Naslov = "Prica o Dilanu Dogu", GodinaIzdanja = "2006", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 300, Stanje="Novo", imgRoute = "DilanDog.jpg" },
+                new Strip(){IdStripa = 2, Naziv = "Alan Ford",Naslov = "Tako je nastala grupa", GodinaIzdanja = "1995", Jezik = "Srpski", Izdavac = "Vsdada", Cena = 250, Stanje="Novo", imgRoute = "AlanFord.jpg" },
+                new Strip(){IdStripa = 3, Naziv = "Blek",Naslov ="Pobuna Trapera", GodinaIzdanja = "1999", Jezik = "Srpski", Izdavac = "Abcvasld", Cena = 300, Stanje="Polovno", imgRoute = "Blek.jpg" },
+                new Strip(){IdStripa = 4, Naziv = "Zagor",Naslov="Gospodari", GodinaIzdanja = "2012", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 100, Stanje="Polovno", imgRoute = "Zagor.jpg" },
             };
 
             modelBuilder.Entity<Strip>().HasData(stripList);

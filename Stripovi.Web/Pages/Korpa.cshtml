@@ -39,7 +39,7 @@
                     <tr>
                         <td>@Convert.ToString(i++)</td>
                         <td><img src="@photoPath" alt="" asp-append-version="true"></td>
-                        <td>@item.Naziv</td>
+                        <td>@item.Naziv "@item.Naslov"</td>
                         <td>@item.Izdavac</td>
                         <td>@item.Stanje</td>
                         <td>@item.GodinaIzdanja</td>
@@ -95,14 +95,14 @@
         <div class="placanje-container">
             <h4>Placanje</h4>
             <select asp-for="BuyConfirmed.Placanje" class="form-group col-md-12" >
-                <option value="Karticom">Platnom karticom</option>
-                <option value="Pouzecem">Placanje pouzecem</option>
+                <option value="Karticom">Placanje pouzecem</option>
+                <option value="Pouzecem">Platnom karticom</option>
                 <option value="Uplatnica">Placanje uplatnicom</option>
             </select>
         </div>
         <div class="pitanje-container">
             <h4>Imate pitanje?</h4>
-            <textarea class="form-group col-md-12" id="message" asp-for="BuyConfirmed.Pitanje" placeholder="Message"></textarea>
+            <textarea class="form-group col-md-12" id="message" asp-for="BuyConfirmed.Pitanje" placeholder="Pitanje"></textarea>
         </div>
         <div class="sazetak-container">
             <ul>

@@ -42,8 +42,8 @@ namespace Stripovi.Web.MockData.MockStripRepository
             if (result != null)
             {
                 result.Naziv = stripPromena.Naziv;
+                result.Naslov = stripPromena.Naslov;
                 result.Izdavac = stripPromena.Izdavac;
-                result.Autor = stripPromena.Autor;
                 result.Stanje = stripPromena.Stanje;
                 result.Jezik = stripPromena.Jezik;
                 result.GodinaIzdanja = stripPromena.GodinaIzdanja;
@@ -84,6 +84,26 @@ namespace Stripovi.Web.MockData.MockStripRepository
             }
 
             return sviStripovi;
+        }
+
+        public async Task<IEnumerable<Strip>> Search(string naslov, string userId)
+        {
+            IQueryable<Strip> query = context.Strip;
+
+            if (!string.IsNullOrEmpty(naslov))
+            {
+                query = query.Where(e => e.Naziv.Contains(naslov) || e.Naslov.Contains(naslov));
+            }
+
+            var StripoviUKorpi = context.Korpa.Where(e => e.UserId == userId)
+                                             .Select(e => new { e.IdStripa });
+
+            foreach (var item in StripoviUKorpi)
+            {
+                query = query.Where(e => e.IdStripa != item.IdStripa);
+            }
+
+            return await query.ToListAsync();
         }
     }
 }

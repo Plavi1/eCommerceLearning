@@ -37,17 +37,17 @@ namespace Stripovi.Web.Pages
 
         public class InputBuyConfirmed
         {
-            [Required]
+            [Required(ErrorMessage = "Niste upisali Grad!")]
             public string Grad { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Niste upisali Postanski broj!")]
             [Display(Name = "Postanski Broj")]
-            public int PostanskiBroj { get; set; }
+            public int? PostanskiBroj { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Niste upisali Ulicu!")]
             public string Ulica { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Niste upisali Kucni Broj!")]
             [Display(Name = "Kucni Broj")]
             public string KucniBroj { get; set; }
             public string Placanje { get; set; }
@@ -115,7 +115,7 @@ namespace Stripovi.Web.Pages
                     Placanje = BuyConfirmed.Placanje,
                     UkupnaCena = BuyConfirmed.UkupnaCena,
                     Ulica = BuyConfirmed.Ulica,
-                    PostanskiBroj = BuyConfirmed.PostanskiBroj,
+                    PostanskiBroj = BuyConfirmed.PostanskiBroj.Value,
                     Status = "Pakovanje"
                 };
                 await porudzbinaRepository.AddPorudzbinu(porudzbina, BuyConfirmed.IdPorucenihStripova);

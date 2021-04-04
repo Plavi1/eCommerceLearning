@@ -122,7 +122,7 @@
                 @Html.DisplayNameFor(model => model.Porudzbina.Status)
             </dt>
             <dd class="col-sm-10">
-                <select asp-for="Status" class="form-control">
+                <select asp-for="Status" class="form-control col-sm-5">
                     <option value="">@Html.DisplayFor(model => model.Porudzbina.Status)</option>
                     @if (Model.Porudzbina.Status == "Pakovanje")
                     {

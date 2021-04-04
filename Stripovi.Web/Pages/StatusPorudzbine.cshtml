@@ -32,7 +32,7 @@
                     <td>
                         @foreach (var strip in item.Stripovi)
                         {
-                            <p>Strip: @strip.Naziv (Izdavac:@strip.Izdavac)</p>
+                            <p>Strip: @strip.Naziv "@strip.Naslov" (Izdavac:@strip.Izdavac)</p>
                         }
                     </td>
                     <td>@item.Porudzbina.UkupnaCena</td>

@@ -1,0 +1,56 @@
+﻿@page
+@model Stripovi.Web.Pages.ContactModel
+@{
+}
+<style>
+
+</style>
+<div class="informacije-container">
+    <div class="row">
+        <div class="info">
+            <h4>Informacije</h4>
+            <ul>
+                <li>Radno vreme: <span>10:00-20:00h</span></li>
+                <li>Broj telefona: <span>011/ 1234567</span></li>
+                <li>Info email: <span>info@stripovi.com</span></li>
+                <li>Mesto: <span>Na planeti</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="kontakt-container">
+    <h4>Kontakt</h4>
+    <form method="post">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Kontakt.ImePrezime"></label>
+                <input asp-for="@Model.Kontakt.ImePrezime" class="form-control" />
+                <span asp-validation-for="@Model.Kontakt.ImePrezime" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Kontakt.Email"></label>
+                <input asp-for="@Model.Kontakt.Email" class="form-control" />
+                <span asp-validation-for="@Model.Kontakt.Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <select asp-for="@Model.Kontakt.Razlog" class="form-group col-md-6">
+                <option value="">Izaberi..</option>
+                <option value="Porudzbina">Porudzbina</option>
+                <option value="Izmena Porudzbine">Izmena Porudzbine</option>
+                <option value="Otkazivanje Porudzbine">Otkazivanje Porudzbine</option>
+                <option value="Reklamacija i ostecenja">Reklamacija i ostecenja</option>
+                <option value="Placanje">Placanje</option>
+                <option value="Moj nalog">Moj nalog</option>
+                <option value="Ostalo">Ostalo</option>
+            </select>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Kontakt.Naslov"></label>
+                <input asp-for="@Model.Kontakt.Naslov" class="form-control" />
+                <span asp-validation-for="@Model.Kontakt.Naslov" class="text-danger"></span>
+            </div>
+        </div>
+        <textarea class="form-group col-md-12" id="message" asp-for="@Model.Kontakt.Komentar"></textarea>
+        <span asp-validation-for="@Model.Kontakt.Komentar" class="text-danger"></span>
+    </form>
+</div>

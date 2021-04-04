@@ -21,11 +21,13 @@ namespace Stripovi.Web.MockData
         [Column(Order = 2)]
         public int IdStripa { get; set; }
         public string Naziv { get; set; }
+        public string Naslov { get; set; }
         public string Izdavac { get; set; }
-        public string Autor { get; set; }
+        [Display(Name = "Vreme Posta")]
         public DateTime VremePosta { get; set; }
         public string Stanje { get; set; }
         public string Jezik { get; set; }
+        [Display(Name = "Godina Izdanja")]
         public string GodinaIzdanja { get; set; }
         public int Cena { get; set; }
         public string imgRoute { get; set; }

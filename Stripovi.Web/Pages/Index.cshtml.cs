@@ -39,14 +39,18 @@ namespace Stripovi.Web.Pages
             this.mapper = mapper;
             this.porudzbinaRepository = porudzbinaRepository;
         }
-       
+
         public IEnumerable<Strip> Stripovi { get; set; }
 
         [BindProperty]
         public int IdStripaZaKorpu { get; set; }
 
+        public string Search { get; set; }
+
+        public int brojStripovauProdaji { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
-        {  
+        { 
             if (signInManager.IsSignedIn(User))
             {
                 if (User.IsInRole("SuperAdmin"))
@@ -60,8 +64,9 @@ namespace Stripovi.Web.Pages
             }
             else
             {
-             Stripovi = await stripRepository.GetStripove();
+              Stripovi = await stripRepository.GetStripove();
             }
+            brojStripovauProdaji = Stripovi.Count();
 
             return Page();
             //  Stripovi = await stripoviService.GetStripove();  //1
@@ -101,8 +106,21 @@ namespace Stripovi.Web.Pages
             }
             TempData["message"] = "Mora te se ulogovati pre nego sto izvrsite porudzbinu!";
             return Redirect("/Identity/Account/Login");
-            
-          
+        }
+
+        public async Task<IActionResult> OnPostSearch(string Search)
+        {
+            string ulogvanUser = signInManager.UserManager.GetUserId(User);
+
+            if (Search != null)
+            {
+                Stripovi = await stripRepository.Search(Search, ulogvanUser);
+                brojStripovauProdaji = Stripovi.Count();
+                return Page();
+            }
+            Stripovi = await stripRepository.UserStripoviVanKorpe(ulogvanUser);
+            brojStripovauProdaji = Stripovi.Count();
+            return Page();
         }
     }
 }

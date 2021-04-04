@@ -16,8 +16,12 @@
         p{
             padding:2em 0 2em 0;
         }
-
+    a:hover {
+        color: #FF9191;
+    }
 </style>
+
+<a asp-page="/administrator">< Nazad</a>
 
 <h1 style="color:#E84545">Svi Stripovi</h1>
 
@@ -31,10 +35,10 @@
                 @Html.DisplayNameFor(model => model.Strip[0].Naziv)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Strip[0].Izdavac)
+                @Html.DisplayNameFor(model => model.Strip[0].Naslov)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Strip[0].Autor)
+                @Html.DisplayNameFor(model => model.Strip[0].Izdavac)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Strip[0].Stanje)
@@ -58,38 +62,38 @@
         @foreach (var item in Model.Strip)
         {
             var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Naziv)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Izdavac)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stanje)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Jezik)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GodinaIzdanja)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cena)
-                </td>
-                <td>
-                    <img src="@photoPath"
-                         asp-append-version="true" />
-                </td>
-                <td>
-                    <a class="text-primary" asp-page="./Edit" asp-route-id="@item.IdStripa">Promeni</a> |
-                    <a asp-page="./Details" asp-route-id="@item.IdStripa">Detalji</a> |
-                    <a class="text-danger" asp-page="./Delete" asp-route-id="@item.IdStripa">Obrisi</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naslov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Izdavac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stanje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jezik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodinaIzdanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                <img src="@photoPath"
+                     asp-append-version="true" />
+            </td>
+            <td>
+                <a class="text-primary" asp-page="./Edit" asp-route-id="@item.IdStripa">Promeni</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdStripa">Detalji</a> |
+                <a class="text-danger" asp-page="./Delete" asp-route-id="@item.IdStripa">Obrisi</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

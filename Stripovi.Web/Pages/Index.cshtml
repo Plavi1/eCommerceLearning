@@ -1,4 +1,4 @@
-﻿@page
+﻿@page  "/{handler?}"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -25,33 +25,37 @@
 </div>
 @if (Model.Stripovi.Any())
 {
-    <div class="search">
-        <input type="text">
-        <a class="search-btn">
-            <svg width="15" height="15" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
-            Search
-        </a>
-    </div>
-    <div class="filter-container">
-        <div class="filter-box">
-            <img src="~/images/alan-ford-icon.jpg" alt="" asp-append-version="true">
-            <p>Alan Ford</p>
+    <form method="post" asp-page-handler="Search">
+        <div class="search">
+            <input type="text" asp-for="Search">
+            <button type="submit" class="search-btn">
+                <svg width="15" height="15" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+                Search
+            </button>
         </div>
-        <div class="filter-box">
-            <img src="~/images/Dilan-dog-icon.jpg" alt="" asp-append-version="true">
-            <p>Dilan Dog</p>
+    </form>
+    <form method="post" asp-page-handler="Search">
+        <div class="filter-container">
+            <div class="filter-box">
+                <img id="1" src="~/images/alan-ford-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-1" type="submit" asp-for="Search" value="Alan Ford" />
+            </div>
+            <div class="filter-box">
+                <img id="2" src="~/images/Dilan-dog-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-2" type="submit" asp-for="Search" value="Dilan Dog" />
+            </div>
+            <div class="filter-box">
+                <img id="3" src="~/images/zagor-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-3" type="submit" asp-for="Search" value="Zagor" />
+            </div>
+            <div class="filter-box">
+                <img id="4" src="~/images/blek-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-4" type="submit" asp-for="Search" value="Blek" />
+            </div>
         </div>
-        <div class="filter-box">
-            <img src="~/images/zagor-icon.jpg" alt="" asp-append-version="true">
-            <p>Zagor</p>
-        </div>
-        <div class="filter-box">
-            <img src="~/images/blek-icon.jpg" alt="" asp-append-version="true">
-            <p>Blek</p>
-        </div>
-    </div>
+    </form>
     <div class="hamburger-menu-and-info">
         <svg width="50" height="50" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0
@@ -60,7 +64,7 @@
              0 0 1-.5-.5z" />
         </svg>
         <div class="info">
-            <p><span>1532</span> STRIPA su u prodaji</p>
+            <p><span>@Model.brojStripovauProdaji</span> STRIPA su u prodaji</p>
         </div>
         <div class="display-menu">
             <ul>
@@ -76,7 +80,7 @@
         @foreach (var item in Model.Stripovi)
         {
             var photoPath = "~/images/" + (item.imgRoute ?? "noimage.jpg");
-            <form method="post">
+            <form method="post" asp-page-handler="OnPostAsync">
                 <div class="card">
                     <div class="card-img">
                         <img src="@photoPath" alt="" asp-append-version="true">
@@ -85,10 +89,9 @@
                         <h3>@item.Naziv</h3>
                         <div class="info">
                             <ul>
+                                <li>Naslov: <span>"@item.Naslov"</span></li>
                                 <li>Izdavac: <span>@item.Izdavac</span></li>
                                 <li>Jezik: <span>@item.Jezik</span></li>
-                                <li>Autor: <span>@item.Autor</span></li>
-
                             </ul>
                             <ul>
                                 <li>Cena: <span>@item.Cena</span></li>
@@ -107,5 +110,15 @@
 }
 else
 {
-    <p>Trenutno nema Stripova u prodaji! </p>
+    <p>Trenutno nema Stripova (kliknite na <a asp-page="Index" style="color:deepskyblue">Home</a> da refresujete)</p>
+}
+
+
+@section Scripts{
+    <script>
+        $(".filter-container .filter-box img").on('click', function () {
+            var id = $(this).attr('id');
+            $('.filter-container .filter-box #input-' + id).click();
+        });
+    </script>
 }
