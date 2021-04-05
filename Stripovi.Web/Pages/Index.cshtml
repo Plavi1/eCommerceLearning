@@ -39,23 +39,26 @@
     <form method="post" asp-page-handler="Search">
         <div class="filter-container">
             <div class="filter-box">
-                <img id="1" src="~/images/alan-ford-icon.jpg" alt="" asp-append-version="true">
-                <input id="input-1" type="submit" asp-for="Search" value="Alan Ford" />
+                <img id="1" src="~/images/MisterNO-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-1" type="submit" asp-for="Search" value="Mister NO" />
             </div>
             <div class="filter-box">
                 <img id="2" src="~/images/Dilan-dog-icon.jpg" alt="" asp-append-version="true">
                 <input id="input-2" type="submit" asp-for="Search" value="Dilan Dog" />
             </div>
             <div class="filter-box">
-                <img id="3" src="~/images/zagor-icon.jpg" alt="" asp-append-version="true">
-                <input id="input-3" type="submit" asp-for="Search" value="Zagor" />
+                <img id="3" src="~/images/alan-ford-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-3" type="submit" asp-for="Search" value="Alan Ford" />
             </div>
             <div class="filter-box">
-                <img id="4" src="~/images/blek-icon.jpg" alt="" asp-append-version="true">
-                <input id="input-4" type="submit" asp-for="Search" value="Blek" />
+                <img id="4" src="~/images/zagor-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-4" type="submit" asp-for="Search" value="Zagor" />
+            </div>
+            <div class="filter-box">
+                <img id="5" src="~/images/blek-icon.jpg" alt="" asp-append-version="true">
+                <input id="input-5" type="submit" asp-for="Search" value="Blek" />
             </div>
         </div>
-    </form>
     <div class="hamburger-menu-and-info">
         <svg width="50" height="50" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0
@@ -76,6 +79,7 @@
             </ul>
         </div>
     </div>
+    </form>
     <div class="card-container">
         @foreach (var item in Model.Stripovi)
         {

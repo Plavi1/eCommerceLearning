@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stripovi.Web.Areas.Identity.Data;
 
 namespace Stripovi.Web.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class StripoviWebDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210405095452_Kontakt")]
+    partial class Kontakt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,15 +150,15 @@ namespace Stripovi.Web.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4e54d035-8c51-4f46-a0e8-2c9d776b6980",
+                            ConcurrencyStamp = "e32f95ce-e0a0-4089-ba52-51458d34b6b2",
                             Email = "Admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPUgDAD9JYYNA+uUPgZo+ZzhnL3Xpy3PApLoN+89MsxPh4bUIlafyLqVXz9aIZfIPw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM/XmfHx680Su65RNRAepiVDd0H7Km3lMDc+eCgA1cIF2iiU2ToWfPpQL6F5Ie9yQw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7008748d-991b-4836-8523-8af653083b42",
+                            SecurityStamp = "59d17e04-fb53-4ab6-8a0d-ec605920f776",
                             TwoFactorEnabled = false,
                             UserName = "Admin@admin.com"
                         });
@@ -424,18 +426,6 @@ namespace Stripovi.Web.Migrations
                         new
                         {
                             IdStripa = 1,
-                            Cena = 230,
-                            GodinaIzdanja = "2010",
-                            Izdavac = "Veseli Cetvrtak",
-                            Jezik = "Srpski",
-                            Naslov = "Cena izdaje",
-                            Naziv = "Mister NO",
-                            Stanje = "Novo",
-                            imgRoute = "MisterNO.jpg"
-                        },
-                        new
-                        {
-                            IdStripa = 2,
                             Cena = 300,
                             GodinaIzdanja = "2006",
                             Izdavac = "Veseli Cetvrtak",
@@ -447,10 +437,10 @@ namespace Stripovi.Web.Migrations
                         },
                         new
                         {
-                            IdStripa = 3,
+                            IdStripa = 2,
                             Cena = 250,
                             GodinaIzdanja = "1995",
-                            Izdavac = "Classic",
+                            Izdavac = "Vsdada",
                             Jezik = "Srpski",
                             Naslov = "Tako je nastala grupa",
                             Naziv = "Alan Ford",
@@ -459,10 +449,10 @@ namespace Stripovi.Web.Migrations
                         },
                         new
                         {
-                            IdStripa = 4,
+                            IdStripa = 3,
                             Cena = 300,
-                            GodinaIzdanja = "2000",
-                            Izdavac = "Wizard",
+                            GodinaIzdanja = "1999",
+                            Izdavac = "Abcvasld",
                             Jezik = "Srpski",
                             Naslov = "Pobuna Trapera",
                             Naziv = "Blek",
@@ -471,7 +461,7 @@ namespace Stripovi.Web.Migrations
                         },
                         new
                         {
-                            IdStripa = 5,
+                            IdStripa = 4,
                             Cena = 100,
                             GodinaIzdanja = "2012",
                             Izdavac = "Veseli Cetvrtak",

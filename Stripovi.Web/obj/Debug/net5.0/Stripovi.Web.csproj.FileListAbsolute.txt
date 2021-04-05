@@ -868,4 +868,8 @@ C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Deb
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Details.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\Index.cshtml.g.cs
 C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Porudzbine\_ViewImports.cshtml.g.cs
-C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Contact.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Kontakt.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Kontakti\Delete.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Kontakti\Details.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Kontakti\Index.cshtml.g.cs
+C:\Users\pc\Desktop\ASP.NET Core  VEZBA\eCommerce\eCommerce\Stripovi.Web\obj\Debug\net5.0\Razor\Pages\Administrator\Kontakti\_ViewImports.cshtml.g.cs

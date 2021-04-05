@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stripovi.Web.Areas.Identity.Data;
 using Stripovi.Web.MockData;
+using Stripovi.Web.MockData.MockKontaktRepository;
 using Stripovi.Web.MockData.MockKorpaRepository;
 using Stripovi.Web.MockData.MockPorudzbinaRepository;
 using Stripovi.Web.MockData.MockStripRepository;
@@ -32,6 +33,7 @@ namespace Stripovi.Web
             services.AddScoped<IPorudzbinaRepository, SQLPorudzbinaRepository>();
             services.AddScoped<IStripRepository, SQLStripRepository>();
             services.AddScoped<IKorpaRepository, SQLKorpaRepository>();
+            services.AddScoped<IKontaktRepository, SQLKontaktRepository>();
 
             services.Configure<RouteOptions>(options =>
             {

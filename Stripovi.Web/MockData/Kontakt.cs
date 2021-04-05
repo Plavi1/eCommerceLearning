@@ -8,7 +8,10 @@ namespace Stripovi.Web.MockData
 {
     public class Kontakt
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
+        [Display(Name = "Ime i Prezime")]
         public string ImePrezime { get; set; }
         [Required]
         [EmailAddress]

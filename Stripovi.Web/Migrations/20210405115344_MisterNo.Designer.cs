@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stripovi.Web.Areas.Identity.Data;
 
 namespace Stripovi.Web.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class StripoviWebDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210405115344_MisterNo")]
+    partial class MisterNo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -53,10 +53,11 @@ namespace Stripovi.Web.Areas.Identity.Data
         {
             
             List<Strip> stripList = new List<Strip>(){
-                new Strip(){IdStripa = 1, Naziv = "Dilan Dog",Naslov = "Prica o Dilanu Dogu", GodinaIzdanja = "2006", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 300, Stanje="Novo", imgRoute = "DilanDog.jpg" },
-                new Strip(){IdStripa = 2, Naziv = "Alan Ford",Naslov = "Tako je nastala grupa", GodinaIzdanja = "1995", Jezik = "Srpski", Izdavac = "Vsdada", Cena = 250, Stanje="Novo", imgRoute = "AlanFord.jpg" },
-                new Strip(){IdStripa = 3, Naziv = "Blek",Naslov ="Pobuna Trapera", GodinaIzdanja = "1999", Jezik = "Srpski", Izdavac = "Abcvasld", Cena = 300, Stanje="Polovno", imgRoute = "Blek.jpg" },
-                new Strip(){IdStripa = 4, Naziv = "Zagor",Naslov="Gospodari", GodinaIzdanja = "2012", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 100, Stanje="Polovno", imgRoute = "Zagor.jpg" },
+                new Strip(){IdStripa = 1, Naziv = "Mister NO",Naslov = "Cena izdaje", GodinaIzdanja = "2010", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 230, Stanje="Novo", imgRoute = "MisterNO.jpg" },
+                new Strip(){IdStripa = 2, Naziv = "Dilan Dog",Naslov = "Prica o Dilanu Dogu", GodinaIzdanja = "2006", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 300, Stanje="Novo", imgRoute = "DilanDog.jpg" },
+                new Strip(){IdStripa = 3, Naziv = "Alan Ford",Naslov = "Tako je nastala grupa", GodinaIzdanja = "1995", Jezik = "Srpski", Izdavac = "Classic", Cena = 250, Stanje="Novo", imgRoute = "AlanFord.jpg" },
+                new Strip(){IdStripa = 4, Naziv = "Blek",Naslov ="Pobuna Trapera", GodinaIzdanja = "2000", Jezik = "Srpski", Izdavac = "Wizard", Cena = 300, Stanje="Polovno", imgRoute = "Blek.jpg" },
+                new Strip(){IdStripa = 5, Naziv = "Zagor",Naslov="Gospodari", GodinaIzdanja = "2012", Jezik = "Srpski", Izdavac = "Veseli Cetvrtak", Cena = 100, Stanje="Polovno", imgRoute = "Zagor.jpg" },
             };
 
             modelBuilder.Entity<Strip>().HasData(stripList);

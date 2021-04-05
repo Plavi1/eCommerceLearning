@@ -20,6 +20,7 @@ namespace Stripovi.Web.Areas.Identity.Data
         public DbSet<Korpa> Korpa { get; set; }
         public DbSet<Porudzbina> Porudzbina { get; set; }
         public DbSet<StripInPorudzbina> StripInPorudzbina { get; set; }
+        public DbSet<Kontakt> Kontakt { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
             {
